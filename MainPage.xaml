@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:control="clr-namespace:MauiSelector.Control"
+                    xmlns:viewmodel="clr-namespace:MauiSelector.ViewModel"
+                    x:DataType="viewmodel:MainViewModel"
+                    x:Class="MauiSelector.MainPage"
+                    Title="Seletores">
+
+    <ScrollView>
+
+        <StackLayout Padding="8,0" VerticalOptions="Center">
+
+            <Label Text="Exemplo de seletores para selecionar dia, mês e ano"
+                        FontSize="Body"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,20"/>
+
+            <Grid ColumnDefinitions="100,*,130" ColumnSpacing="6">
+
+                <control:SelectorView Grid.Column="0"
+                                                        Title="Dia"
+                                                        IsVisibleTitle="True"
+                                                        Text="{Binding TextDay}" 
+                                                        IdSelector="{Binding Day, Mode=TwoWay}"
+                                                        IndexSelector="{Binding IndexDay}"
+                                                        ItemsSelector="{Binding ItemsDay}"/>
+                
+                <control:SelectorView Grid.Column="1"
+                                                        Title="Mês"
+                                                        IsVisibleTitle="True"
+                                                        Text="{Binding TextMonth}" 
+                                                        IdSelector="{Binding Month, Mode=TwoWay}"
+                                                        IndexSelector="{Binding IndexMonth}"
+                                                        ItemsSelector="{Binding ItemsMonth}"/>
+
+                <control:SelectorView Grid.Column="2"
+                                                        Title="Ano"
+                                                        IsVisibleTitle="True"
+                                                        Text="{Binding TextYear}" 
+                                                        IdSelector="{Binding Year, Mode=TwoWay}"
+                                                        IndexSelector="{Binding IndexYear}"
+                                                        ItemsSelector="{Binding ItemsYear}"/>
+
+            </Grid>
+
+            <Button Text="Exibir a data"
+                            Command="{Binding DisplayDateCommand}"
+                            HorizontalOptions="Center"
+                            Margin="0,20"/>
+
+            <Label Text="{Binding DisplayLabelDate}"
+                        FontSize="Body"
+                        HorizontalOptions="Center"
+                        Margin="0,20"/>
+
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>
